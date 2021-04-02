@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+<style>
+  #blockedta {
+	display: block;
+	height: 500px;
+	width: 500px;
+  }
+</style>
+  </head>
+
+  <body>
+    <form>
+      <label>Blocked URLs (regexes, one per line)</label>
+      <br>
+      <textarea id="blockedta"></textarea>
+      <br>
+
+      <label>Start hour (24-hour clock, inclusive)</label>
+      <input id="starthour" type="number" min="0" />
+      <br>
+
+      <label>End hour (24-hour clock, exclusive)</label>
+      <input id="endhour" type="number" max="23" />
+      <br>
+
+      <button type="submit">Save</button>
+    </form>
+    <script src="options.js"></script>
+  </body>
+</html>
