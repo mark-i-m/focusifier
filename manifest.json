@@ -29,7 +29,8 @@
   },
 
   "web_accessible_resources": [
-    "blocked.html"
+    "blocked.html",
+    "blocked.js"
   ]
 
 }

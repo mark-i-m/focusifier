@@ -3,9 +3,23 @@
   <head>
     <meta charset="utf-8"/>
     <title>Blocked Page</title>
+<style>
+#b {
+  color: black;
+  border: black 1px solid;
+  background: white;
+}
+#blockedurl {
+  font-family: monospace;
+}
+</style>
   </head>
 
   <body>
-    This page is blocked!
+    <div id="b">
+      <h1>Focus!</h1><br />
+      <span id="blockedurl"></span>
+    </div>
+    <script src="blocked.js"></script>
   </body>
 </html>

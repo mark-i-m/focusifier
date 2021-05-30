@@ -25,7 +25,9 @@ function blockPage (details) {
   if (isScheduleBlocked(config.schedule)
         && isInBlockList(config.blockedList, details.url))
   {
-    const blockedUrl = browser.runtime.getURL("blocked.html");
+    const blockedUrl =
+      browser.runtime.getURL("blocked.html")
+      + "?url=" + details.url;
 
     console.log("Blocking!");
     return { redirectUrl: blockedUrl };
