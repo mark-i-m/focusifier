@@ -6,7 +6,8 @@ let config = {
   schedule: {
     start: 0, // starting hour
     end: 12 + 6 // ending hour
-  }
+  },
+  exceptionList: []
 };
 
 // Checks what to do and maybe cancels the request.
@@ -22,8 +23,30 @@ function blockPage (details) {
     return blockList.some(blocked => url.match(blocked));
   }
 
+  function isInExceptionList(exceptionList, url) {
+    const d = (new Date()).getDay();
+    const h = (new Date()).getHours();
+
+    for (const exception of exceptionList) {
+      if (url.match(exception.regex)
+            && exception.day == d
+            && exception.start <= h
+            && h < exception.end) {
+        console.log("Applying blocking exception: "
+          + exception.regex
+          + " " + exception.day
+          + " " + exception.start
+          + " " + exception.end);
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   if (isScheduleBlocked(config.schedule)
-        && isInBlockList(config.blockedList, details.url))
+        && isInBlockList(config.blockedList, details.url)
+        && !isInExceptionList(config.exceptionList, details.url))
   {
     const blockedUrl =
       browser.runtime.getURL("blocked.html")

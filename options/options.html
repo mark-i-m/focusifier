@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
 <style>
-  #blockedta {
+  #blockedta, #exceptionsta {
 	display: block;
 	height: 500px;
 	width: 500px;
@@ -24,6 +24,11 @@
 
       <label>End hour (24-hour clock, exclusive)</label>
       <input id="endhour" type="number" max="23" />
+      <br>
+
+      <label>Exceptions (regex, day, start hour, end hour; Sunday=0, ... Saturday=6; one per line)</label>
+      <br>
+      <textarea id="exceptionsta"></textarea>
       <br>
 
       <button type="submit">Save</button>
